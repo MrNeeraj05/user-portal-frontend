@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.services';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class Register {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -30,12 +31,23 @@ export class Register {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log('User Registered:', this.registerForm.value);
-      this.router.navigate(['/user-form']); // ✅ after register go to user form
+      const { name, email, password } = this.registerForm.value;
+      this.authService.register({ name, email, password }).subscribe({
+        next: (res: any) => {
+          console.log('User Registered:', res);
+          this.router.navigate(['/user-form']);
+        },
+        error: (err: any) => {
+          console.error('Registration failed:', err);
+          alert('Registration failed!');
+        }
+        
+      });
     } else {
       alert('Please fill all fields correctly!');
     }
   }
+  
   goToLogin() {
     this.router.navigate(['/login']);
   }
