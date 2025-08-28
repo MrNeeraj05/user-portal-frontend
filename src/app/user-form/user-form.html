@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="card p-4 shadow-lg">
+      <h3 class="text-center mb-4 text-info">User Details</h3>
+  
+      <form (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <div class="col">
+            <label>Name</label>
+            <input [(ngModel)]="name" name="name" type="text" class="form-control" placeholder="Enter your name" required />
+          </div>
+          <div class="col">
+            <label>Mobile Number</label>
+            <input [(ngModel)]="mobile" name="mobile" type="text" class="form-control" placeholder="Enter mobile number" required />
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label>Email</label>
+          <input [(ngModel)]="email" name="email" type="email" class="form-control" placeholder="Enter email" required />
+        </div>
+  
+        <div class="row mb-3">
+          <div class="col">
+            <label>Country</label>
+            <input [(ngModel)]="country" name="country" type="text" class="form-control" placeholder="Enter country" />
+          </div>
+          <div class="col">
+            <label>Company Name</label>
+            <input [(ngModel)]="company" name="company" type="text" class="form-control" placeholder="Enter company name" />
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label>Job Title</label>
+          <input [(ngModel)]="jobTitle" name="jobTitle" type="text" class="form-control" placeholder="Enter job title" />
+        </div>
+  
+        <button type="submit" class="btn btn-info w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+  
