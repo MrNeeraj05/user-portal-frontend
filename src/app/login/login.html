@@ -37,17 +37,13 @@
           </div>
         </div>
   
-        <div class="mb-3 text-end">
-          <a href="#" class="text-decoration-none">Forgot Password?</a>
-        </div>
-  
         <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
       </form>
   
       <div class="text-center mt-3">
         <p>
           New user? 
-          <a routerLink="/register">Register here</a>
+          <button class="btn btn-link p-0" (click)="goToRegister()">Register here</button>
         </p>
       </div>
     </div>

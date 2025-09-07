@@ -1,41 +1,39 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow-lg" style="width: 25rem;">
-      <h2 class="text-center text-primary mb-3">Register</h2>
-  
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label>Name</label>
-          <input type="text" formControlName="name" class="form-control" placeholder="Enter your name" required />
-        </div>
-  
-        <div class="mb-3">
-          <label>Email</label>
-          <input type="email" formControlName="email" class="form-control" placeholder="Enter your email" required />
-        </div>
-  
-        <div class="mb-3">
-          <label>Password</label>
-          <input type="password" formControlName="password" class="form-control" placeholder="Enter password" required minlength="6" />
-        </div>
-  
-        <div class="mb-3">
-          <label>Confirm Password</label>
-          <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm password" required />
-          <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched" class="text-danger">
-            Passwords do not match
-          </div>
-        </div>
-  
-        <button type="submit" class="btn btn-success w-100">Register</button>
-      </form>
-  
-      <div class="text-center mt-3">
-        <p>
-          Existing user?
-          <button class="btn btn-link p-0" (click)="goToLogin()">Login here</button>
-        </p>
+  <div class="card p-4 shadow-lg" style="width: 25rem;">
+    <h2 class="text-center text-primary mb-3">Register</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" placeholder="Enter your name" />
       </div>
-      
+
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Enter your email" />
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="Enter password" />
+      </div>
+
+      <div class="mb-3">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm password" />
+        <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched" class="text-danger">
+          Passwords do not match
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100" [disabled]="registerForm.invalid">Register</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <p>
+        Existing user?
+        <button class="btn btn-link p-0" (click)="goToLogin()">Login here</button>
+      </p>
     </div>
   </div>
-  
+</div>

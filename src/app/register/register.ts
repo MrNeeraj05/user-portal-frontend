@@ -41,15 +41,13 @@ export class Register {
           console.error('Registration failed:', err);
           alert('Registration failed!');
         }
-        
       });
     } else {
       alert('Please fill all fields correctly!');
     }
   }
-  
+
   goToLogin() {
     this.router.navigate(['/login']);
   }
-  
 }
